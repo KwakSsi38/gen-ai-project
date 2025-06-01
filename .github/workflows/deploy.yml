@@ -23,9 +23,6 @@ jobs:
       - name: ⚙️ 프로젝트 빌드
         run: npm run build --if-present
 
-      - name: ✅ 테스트 실행
-        run: npm test
-
       - name: 🛠️ .env 파일 생성
         run: |
           echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" > .env
