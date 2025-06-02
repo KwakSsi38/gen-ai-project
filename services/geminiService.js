@@ -30,7 +30,7 @@ export const sendToGemini = async (imagePath) => {
 
   const response = await ai.models.generateContent({
     model: "gemini-2.0-flash",
-    contents: createUserContent([createPartFromUri(myfile.uri, myfile.mimeType), prompt]),
+    contents: createUserContent([createPartFromUri(myfile.uri, myfile.mimeType), prompts]),
   });
 
   return response.text;
