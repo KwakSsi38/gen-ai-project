@@ -1,0 +1,37 @@
+name: Node.js CI/CD
+
+on:
+  push:
+    branches: [ "server" ]  # server 브랜치에 push 시 실행
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: 📂 리포지토리 체크아웃
+        uses: actions/checkout@v4
+
+      - name: ⚙️ Node.js 20.x 설정
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          cache: 'npm'
+
+      - name: 📦 의존성 설치
+        run: npm ci
+      - name: ⚙️ 프로젝트 빌드
+        run: npm run build --if-present
+
+      - name: 🛠️ .env 파일 생성
+        run: |
+          echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" > .env
+          echo "GOOGLE_CREDENTIALS_B64=${{ secrets.GOOGLE_CREDENTIALS_B64 }}" >> .env
+
+      - name: 🚀 서버 실행 또는 재시작 (PM2)
+        run: |
+          if pm2 list | grep -q "caption-app"; then
+            pm2 restart caption-app
+          else
+            pm2 start app.js --name caption-app
+          fi
