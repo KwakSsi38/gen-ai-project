@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">시각 도우미</string>
+    <string name="accessibility_desc">화면을 두 번 탭하면 이미지 설명 앱이 실행됩니다.</string>
+    <string name="server_ip">13.124.208.197</string>
+</resources>

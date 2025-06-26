@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageButton
+        android:id="@+id/overlayButton"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/rounded_button_bg"
+        android:src="@android:drawable/ic_menu_camera"
+        android:contentDescription="이미지 설명 실행"
+        android:focusable="true"
+        android:importantForAccessibility="yes" />
+</LinearLayout>
